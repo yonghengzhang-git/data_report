@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.jrx.zyh.mapper.DailySummaryMapper">
+  <resultMap id="BaseResultMap" type="com.jrx.zyh.model.DailySummary">
+    <id column="s_id" jdbcType="INTEGER" property="sId" />
+    <result column="cust_id" jdbcType="INTEGER" property="custId" />
+    <result column="update_time" jdbcType="TIMESTAMP" property="updateTime" />
+    <result column="trans_date" jdbcType="DATE" property="transDate" />
+    <result column="surname" jdbcType="VARCHAR" property="surname" />
+    <result column="tran_max_amt" jdbcType="DECIMAL" property="tranMaxAmt" />
+    <result column="pay_amt" jdbcType="DECIMAL" property="payAmt" />
+    <result column="tran_cnt" jdbcType="INTEGER" property="tranCnt" />
+    <result column="pay_cnt" jdbcType="INTEGER" property="payCnt" />
+    <result column="tran_amt" jdbcType="DECIMAL" property="tranAmt" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    s_id, cust_id, update_time, trans_date, surname, tran_max_amt, pay_amt, tran_cnt, 
+    pay_cnt, tran_amt
+  </sql>
+<!--  <select id="selectByExample" parameterType="cn.zyh.domain.DailySummaryExample" resultMap="BaseResultMap">
+    select
+    <if test="distinct">
+      distinct
+    </if>
+    <include refid="Base_Column_List" />
+    from daily_summary
+    <if test="_parameter != null">
+      <include refid="Example_Where_Clause" />
+    </if>
+    <if test="orderByClause != null">
+      order by ${orderByClause}
+    </if>
+  </select>-->
+
+  <select id="selectAll" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from daily_summary;
+  </select>
+
+  <select id="selectByPrimaryKey" parameterType="java.lang.Integer" resultMap="BaseResultMap">
+    select 
+    <include refid="Base_Column_List" />
+    from daily_summary
+    where s_id = #{sId,jdbcType=INTEGER}
+  </select>
+  <delete id="deleteByPrimaryKey" parameterType="java.lang.Integer">
+    delete from daily_summary
+    where s_id = #{sId,jdbcType=INTEGER}
+  </delete>
+  <insert id="insert" parameterType="com.jrx.zyh.model.DailySummary">
+    insert into daily_summary (s_id, cust_id, update_time, 
+      trans_date, surname, tran_max_amt, 
+      pay_amt, tran_cnt, pay_cnt, 
+      tran_amt)
+    values (#{sId,jdbcType=INTEGER}, #{custId,jdbcType=INTEGER}, #{updateTime,jdbcType=TIMESTAMP}, 
+      #{transDate,jdbcType=DATE}, #{surname,jdbcType=VARCHAR}, #{tranMaxAmt,jdbcType=DECIMAL}, 
+      #{payAmt,jdbcType=DECIMAL}, #{tranCnt,jdbcType=INTEGER}, #{payCnt,jdbcType=INTEGER}, 
+      #{tranAmt,jdbcType=DECIMAL})
+  </insert>
+  <insert id="insertSelective" parameterType="com.jrx.zyh.model.DailySummary">
+    insert into daily_summary
+    <trim prefix="(" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        s_id,
+      </if>
+      <if test="custId != null">
+        cust_id,
+      </if>
+      <if test="updateTime != null">
+        update_time,
+      </if>
+      <if test="transDate != null">
+        trans_date,
+      </if>
+      <if test="surname != null">
+        surname,
+      </if>
+      <if test="tranMaxAmt != null">
+        tran_max_amt,
+      </if>
+      <if test="payAmt != null">
+        pay_amt,
+      </if>
+      <if test="tranCnt != null">
+        tran_cnt,
+      </if>
+      <if test="payCnt != null">
+        pay_cnt,
+      </if>
+      <if test="tranAmt != null">
+        tran_amt,
+      </if>
+    </trim>
+    <trim prefix="values (" suffix=")" suffixOverrides=",">
+      <if test="sId != null">
+        #{sId,jdbcType=INTEGER},
+      </if>
+      <if test="custId != null">
+        #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transDate != null">
+        #{transDate,jdbcType=DATE},
+      </if>
+      <if test="surname != null">
+        #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="tranMaxAmt != null">
+        #{tranMaxAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="payAmt != null">
+        #{payAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tranCnt != null">
+        #{tranCnt,jdbcType=INTEGER},
+      </if>
+      <if test="payCnt != null">
+        #{payCnt,jdbcType=INTEGER},
+      </if>
+      <if test="tranAmt != null">
+        #{tranAmt,jdbcType=DECIMAL},
+      </if>
+    </trim>
+  </insert>
+  <update id="updateByPrimaryKeySelective" parameterType="com.jrx.zyh.model.DailySummary">
+    update daily_summary
+    <set>
+      <if test="custId != null">
+        cust_id = #{custId,jdbcType=INTEGER},
+      </if>
+      <if test="updateTime != null">
+        update_time = #{updateTime,jdbcType=TIMESTAMP},
+      </if>
+      <if test="transDate != null">
+        trans_date = #{transDate,jdbcType=DATE},
+      </if>
+      <if test="surname != null">
+        surname = #{surname,jdbcType=VARCHAR},
+      </if>
+      <if test="tranMaxAmt != null">
+        tran_max_amt = #{tranMaxAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="payAmt != null">
+        pay_amt = #{payAmt,jdbcType=DECIMAL},
+      </if>
+      <if test="tranCnt != null">
+        tran_cnt = #{tranCnt,jdbcType=INTEGER},
+      </if>
+      <if test="payCnt != null">
+        pay_cnt = #{payCnt,jdbcType=INTEGER},
+      </if>
+      <if test="tranAmt != null">
+        tran_amt = #{tranAmt,jdbcType=DECIMAL},
+      </if>
+    </set>
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+  <update id="updateByPrimaryKey" parameterType="com.jrx.zyh.model.DailySummary">
+    update daily_summary
+    set cust_id = #{custId,jdbcType=INTEGER},
+      update_time = #{updateTime,jdbcType=TIMESTAMP},
+      trans_date = #{transDate,jdbcType=DATE},
+      surname = #{surname,jdbcType=VARCHAR},
+      tran_max_amt = #{tranMaxAmt,jdbcType=DECIMAL},
+      pay_amt = #{payAmt,jdbcType=DECIMAL},
+      tran_cnt = #{tranCnt,jdbcType=INTEGER},
+      pay_cnt = #{payCnt,jdbcType=INTEGER},
+      tran_amt = #{tranAmt,jdbcType=DECIMAL}
+    where s_id = #{sId,jdbcType=INTEGER}
+  </update>
+</mapper>
