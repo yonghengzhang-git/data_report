@@ -1,7 +1,6 @@
 package com.jrx.zyh.model;
 
 import com.jrx.zyh.model.enums.TransTypeEnum;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 

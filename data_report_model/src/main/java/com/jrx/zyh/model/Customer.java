@@ -2,7 +2,6 @@ package com.jrx.zyh.model;
 
 import com.jrx.zyh.model.enums.EducationEnum;
 import com.jrx.zyh.model.enums.MarriageEnum;
-import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
