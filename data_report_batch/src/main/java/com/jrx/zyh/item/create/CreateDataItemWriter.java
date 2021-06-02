@@ -1,6 +1,5 @@
 package com.jrx.zyh.item.create;
 
-import com.jrx.zyh.model.Customer;
 import org.apache.ibatis.session.SqlSessionFactory;
 import org.mybatis.spring.batch.MyBatisBatchItemWriter;
 

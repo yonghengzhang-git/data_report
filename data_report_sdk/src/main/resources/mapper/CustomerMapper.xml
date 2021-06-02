@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.jrx.zyh.CustomerMapper">
+<mapper namespace="com.jrx.zyh.mapper.CustomerMapper">
   <resultMap id="BaseResultMap" type="com.jrx.zyh.model.Customer">
     <id column="cust_id" jdbcType="INTEGER" property="custId" />
     <result column="surname" jdbcType="VARCHAR" property="surname" />

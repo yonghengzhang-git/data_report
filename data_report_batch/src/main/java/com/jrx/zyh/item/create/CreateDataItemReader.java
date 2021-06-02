@@ -1,10 +1,5 @@
 package com.jrx.zyh.item.create;
 
-import com.jrx.zyh.model.Customer;
-import org.springframework.batch.item.ItemReader;
-import org.springframework.batch.item.NonTransientResourceException;
-import org.springframework.batch.item.ParseException;
-import org.springframework.batch.item.UnexpectedInputException;
 import org.springframework.batch.item.support.ListItemReader;
 
 import java.util.List;

@@ -22,14 +22,34 @@ public class SimulatedDataJobConfig {
     private JobBuilderFactory jobBuilderFactory;
 
     @Autowired
-    @Qualifier("createStep")
-    private Step createStep;
+    @Qualifier("createCustStep")
+    private Step createCustStep;
 
+    @Autowired
+    @Qualifier("createTranStep")
+    private Step createTranStep;
+
+    /**
+     * 批量生产客户信息的job
+     * @return
+     */
     @Bean
-    public Job simulatedDataJob(){
-        return jobBuilderFactory.get("simulatedDataJob")
+    public Job simulatedCustDataJob(){
+        return jobBuilderFactory.get("simulatedCustDataJob")
                 .incrementer(new RunIdIncrementer())
-                .start(createStep)
+                .start(createCustStep)
+                .build();
+    }
+
+    /**
+     * 批量生产交易记录信息的job
+     * @return
+     */
+    @Bean
+    public Job simulatedTranDataJob(){
+        return jobBuilderFactory.get("simulatedTranDataJob")
+                .incrementer(new RunIdIncrementer())
+                .start(createTranStep)
                 .build();
     }
 
