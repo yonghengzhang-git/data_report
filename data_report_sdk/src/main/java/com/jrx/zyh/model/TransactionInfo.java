@@ -1,6 +1,7 @@
 package com.jrx.zyh.model;
 
 import com.jrx.zyh.model.enums.TransTypeEnum;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -15,6 +16,7 @@ import java.util.Date;
 
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class TransactionInfo {
 
     private Integer transId;
@@ -25,7 +27,7 @@ public class TransactionInfo {
 
     private String cardNbr;
 
-    private Integer tranno;
+    private Long tranNo;
 
     private Integer monthNbr;
 
@@ -34,15 +36,16 @@ public class TransactionInfo {
     private String transType;
 
     private Date txnDatetime;
+//    private LocalDate txnDatetime;
 
     private static final long serialVersionUID = 1L;
 
-    public TransactionInfo(Integer transId, Integer custId, String account, String cardNbr, Integer tranno, Integer monthNbr, BigDecimal bill, TransTypeEnum transType, Date txnDatetime) {
+    public TransactionInfo(Integer transId, Integer custId, String account, String cardNbr, Long tranno, Integer monthNbr, BigDecimal bill, TransTypeEnum transType, Date txnDatetime) {
         this.transId = transId;
         this.custId = custId;
         this.account = account;
         this.cardNbr = cardNbr;
-        this.tranno = tranno;
+        this.tranNo = tranno;
         this.monthNbr = monthNbr;
         this.bill = bill;
         this.transType = transType.getParam();

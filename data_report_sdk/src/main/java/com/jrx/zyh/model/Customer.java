@@ -2,6 +2,7 @@ package com.jrx.zyh.model;
 
 import com.jrx.zyh.model.enums.EducationEnum;
 import com.jrx.zyh.model.enums.MarriageEnum;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
@@ -14,6 +15,7 @@ import java.io.Serializable;
  */
 @Data
 @NoArgsConstructor
+@AllArgsConstructor
 public class Customer implements Serializable {
 
     private Integer custId;
@@ -31,6 +33,7 @@ public class Customer implements Serializable {
     private String address;
 
     private static final long serialVersionUID = 1L;
+
 
 
     /**

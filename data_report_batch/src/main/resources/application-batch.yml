@@ -1,0 +1,5 @@
+spring:
+  datasource:
+    schema: classpath:org/springframework/batch/core/schema-mysql.sql
+  batch:
+    initialize-schema: always

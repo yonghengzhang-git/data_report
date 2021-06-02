@@ -12,8 +12,6 @@
         <module>data_report_sdk</module>
         <module>data_report_server</module>
         <module>data_report_batch</module>
-        <module>data_report_model</module>
-        <module>data_report_dao</module>
     </modules>
 
     <parent>
