@@ -15,7 +15,7 @@ import org.springframework.context.annotation.Configuration;
  * @describe
  */
 
-@Configuration
+//@Configuration
 public class SimulatedDataJobConfig {
 
     @Autowired

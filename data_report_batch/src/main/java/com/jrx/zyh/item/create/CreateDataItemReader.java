@@ -1,5 +1,6 @@
 package com.jrx.zyh.item.create;
 
+import org.mybatis.spring.batch.MyBatisPagingItemReader;
 import org.springframework.batch.item.support.ListItemReader;
 
 import java.util.List;
@@ -14,4 +15,5 @@ public class CreateDataItemReader<T> extends ListItemReader<T> {
     public CreateDataItemReader(List<T> list) {
         super(list);
     }
+
 }

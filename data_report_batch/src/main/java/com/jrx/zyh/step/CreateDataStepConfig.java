@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021/5/31 21:05
  * @describe
  */
-@Configuration
+//@Configuration
 public class CreateDataStepConfig {
 
     @Autowired

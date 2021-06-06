@@ -1,0 +1,23 @@
+package com.jrx.zyh.config;
+
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import springfox.documentation.spi.DocumentationType;
+import springfox.documentation.spring.web.plugins.Docket;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
+
+/**
+ * @author Java实习-张永恒
+ * @date 2021/6/5 20:56
+ * @describe
+ */
+@Configuration
+@EnableSwagger2
+public class SwaggerConfig {
+
+    @Bean
+    public Docket docket(){
+        return new Docket(DocumentationType.SWAGGER_2);
+    }
+
+}

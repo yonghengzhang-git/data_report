@@ -93,7 +93,7 @@ public class RandomDataUtil {
      */
     static {
         ArrayList<Customer> list = new ArrayList<>();
-        for (int i = 0; i < 120; i++) {
+        for (int i = 1; i < 120; i++) {
 
             Customer customer = new Customer(
                     null,
@@ -121,7 +121,7 @@ public class RandomDataUtil {
      * 随机生成客户id
      */
     public static Integer randomCustId() {
-        return RandomUtil.randomInt(2, 123);
+        return RandomUtil.randomInt(2, 119);
     }
 
     /**
@@ -214,6 +214,10 @@ public class RandomDataUtil {
         }
 
         return list;
+    }
+
+    public void test(){
+
     }
 
 }

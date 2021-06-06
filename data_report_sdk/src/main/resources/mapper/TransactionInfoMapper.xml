@@ -12,6 +12,7 @@
     <result column="trans_type" jdbcType="VARCHAR" property="transType" />
     <result column="txn_datetime" jdbcType="DATE" property="txnDatetime" />
   </resultMap>
+
   <sql id="Example_Where_Clause">
     <where>
       <foreach collection="oredCriteria" item="criteria" separator="or">
@@ -44,6 +45,9 @@
   <sql id="Base_Column_List">
     trans_id, cust_id, account, card_nbr, tranno, month_nbr, bill, trans_type, txn_datetime
   </sql>
+  <sql id="Base_Column_List2">
+    t.trans_id, t.cust_id, t.account, t.card_nbr, t.tranno, t.month_nbr, t.bill, t.trans_type, t.txn_datetime
+  </sql>
 <!--  <select id="selectByExample" parameterType="cn.zyh.domain.TransactionInfoExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
@@ -59,6 +63,41 @@
     </if>
   </select>-->
 
+  <resultMap id="map1" type="com.jrx.zyh.model.dto.TransactionInfoDTO">
+    <id column="trans_id" jdbcType="INTEGER" property="transId" />
+    <result column="cust_id" jdbcType="INTEGER" property="custId" />
+    <result column="account" jdbcType="VARCHAR" property="account" />
+    <result column="card_nbr" jdbcType="VARCHAR" property="cardNbr" />
+    <result column="tranno" jdbcType="BIGINT" property="tranNo" />
+    <result column="month_nbr" jdbcType="INTEGER" property="monthNbr" />
+    <result column="bill" jdbcType="DECIMAL" property="bill" />
+    <result column="trans_type" jdbcType="VARCHAR" property="transType" />
+    <result column="txn_datetime" jdbcType="DATE" property="txnDatetime" />
+<!--    <association column="surname" jdbcType="VARCHAR" property="surname" />-->
+    <result column="surname" jdbcType="VARCHAR" property="surname"/>
+  </resultMap>
+
+  <resultMap id="map2" type="com.jrx.zyh.model.dto.TransactionInfoMapDTO">
+    <result column="surname" property="name"/>
+    <collection property="list" ofType="com.jrx.zyh.model.dto.TransactionInfoDTO">
+      <id column="trans_id" jdbcType="INTEGER" property="transId" />
+      <result column="cust_id" jdbcType="INTEGER" property="custId" />
+      <result column="account" jdbcType="VARCHAR" property="account" />
+      <result column="card_nbr" jdbcType="VARCHAR" property="cardNbr" />
+      <result column="tranno" jdbcType="BIGINT" property="tranNo" />
+      <result column="month_nbr" jdbcType="INTEGER" property="monthNbr" />
+      <result column="bill" jdbcType="DECIMAL" property="bill" />
+      <result column="trans_type" jdbcType="VARCHAR" property="transType" />
+      <result column="txn_datetime" jdbcType="DATE" property="txnDatetime" />
+      <!--    <association column="surname" jdbcType="VARCHAR" property="surname" />-->
+<!--      <result column="surname" jdbcType="VARCHAR" property="surname"/>-->
+    </collection>
+  </resultMap>
+
+  <select id="selectTranListByDate" parameterType="date" resultMap="map2">
+    select <include refid="Base_Column_List2"/>,cust.surname from transaction_info t left join customer cust on t.cust_id = cust.cust_id where t.txn_datetime = #{date}
+  </select>
+  
   <select id="selectAll" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/> from transaction_info
   </select>

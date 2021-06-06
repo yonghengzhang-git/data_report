@@ -56,6 +56,11 @@
       order by ${orderByClause}
     </if>
   </select>-->
+
+  <select id="selectCustNameById" parameterType="int" resultType="string">
+    select surname from customer where cust_id = #{id}
+  </select>
+
   <select id="selectAll" resultMap="BaseResultMap">
     select <include refid="Base_Column_List"/> from customer;
   </select>
