@@ -2,6 +2,8 @@ package com.jrx.zyh.model;
 
 import com.jrx.zyh.model.enums.EducationEnum;
 import com.jrx.zyh.model.enums.MarriageEnum;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,8 +18,10 @@ import java.io.Serializable;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
+@ApiModel("客户实体类")
 public class Customer implements Serializable {
 
+    @ApiModelProperty("客户id")
     private Integer custId;
 
     private String surname;

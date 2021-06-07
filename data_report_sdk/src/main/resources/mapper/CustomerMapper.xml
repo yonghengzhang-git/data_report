@@ -57,6 +57,31 @@
     </if>
   </select>-->
 
+  <select id="selectByCondition" resultMap="BaseResultMap">
+    select <include refid="Base_Column_List"/> from customer
+    <where>
+      <if test="name != null">
+        surname like concat('%',#{name},'%')
+      </if>
+      <if test="custId != null">
+        and cast(cust_id as char) like concat('%',#{custId},'%')
+      </if>
+    </where>
+    limit #{pageNum},20
+  </select>
+
+  <select id="countByCondition" resultType="int">
+    select count(1) from customer
+    <where>
+      <if test="name != null">
+        surname like concat('%',#{name},'%')
+      </if>
+      <if test="custId != null">
+        and cast(cust_id as char) like concat('%',#{custId},'%')
+      </if>
+    </where>
+  </select>
+
   <select id="selectCustNameById" parameterType="int" resultType="string">
     select surname from customer where cust_id = #{id}
   </select>

@@ -1,6 +1,7 @@
 package com.jrx.zyh.mapper;
 
 import com.jrx.zyh.model.Customer;
+import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
 
@@ -23,4 +24,12 @@ public interface CustomerMapper {
     int updateByPrimaryKey(Customer record);
 
     String selectCustNameById(Integer custId);
+
+    List<Customer> selectByCondition(@Param("pageNum") Integer pageNum,
+                                     @Param("name") String name,
+                                     @Param("custId") Integer custId);
+
+    Integer countByCondition(
+                             @Param("name") String name,
+                             @Param("custId") Integer custId);
 }

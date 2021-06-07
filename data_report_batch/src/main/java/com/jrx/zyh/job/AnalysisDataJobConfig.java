@@ -14,7 +14,7 @@ import org.springframework.context.annotation.Configuration;
  * @date 2021/6/5 15:57
  * @describe
  */
-@Configuration
+//@Configuration
 public class AnalysisDataJobConfig {
 
     @Autowired

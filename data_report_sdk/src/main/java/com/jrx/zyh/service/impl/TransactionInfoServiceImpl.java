@@ -2,9 +2,8 @@ package com.jrx.zyh.service.impl;
 
 import com.jrx.zyh.mapper.TransactionInfoMapper;
 import com.jrx.zyh.model.TransactionInfo;
-import com.jrx.zyh.model.dto.TransactionInfoDTO;
 import com.jrx.zyh.model.dto.TransactionInfoMapDTO;
-import com.jrx.zyh.service.TransactionInfoService;
+import com.jrx.zyh.service.ITransactionInfoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,7 +17,7 @@ import java.util.List;
  */
 
 @Service
-public class TransactionInfoServiceImpl implements TransactionInfoService {
+public class TransactionInfoServiceImpl implements ITransactionInfoService {
 
     @Autowired
     private TransactionInfoMapper transactionInfoMapper;

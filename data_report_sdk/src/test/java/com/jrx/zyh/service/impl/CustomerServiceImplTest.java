@@ -3,7 +3,7 @@ package com.jrx.zyh.service.impl;
 import com.jrx.zyh.model.Customer;
 import com.jrx.zyh.model.enums.EducationEnum;
 import com.jrx.zyh.model.enums.MarriageEnum;
-import com.jrx.zyh.service.CustomerService;
+import com.jrx.zyh.service.ICustomerService;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ import java.util.List;
 public class CustomerServiceImplTest {
 
     @Autowired
-    private CustomerService customerService;
+    private ICustomerService customerService;
 
     @Test
     public void test01(){

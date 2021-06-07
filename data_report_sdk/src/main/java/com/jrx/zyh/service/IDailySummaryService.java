@@ -8,7 +8,7 @@ import java.util.List;
  * @author Java实习-张永恒
  * @date 2021/5/31 9:31
  */
-public interface DailySummaryService {
+public interface IDailySummaryService {
 
     List<DailySummary> findAll();
 

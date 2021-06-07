@@ -1,26 +1,21 @@
 package com.jrx.zyh.service.impl;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.google.gson.Gson;
-import com.jrx.zyh.model.DailySummary;
-import com.jrx.zyh.model.TransactionInfo;
-import com.jrx.zyh.model.dto.TransactionInfoDTO;
+import com.jrx.zyh.DataReportSdkApplication;
+import com.jrx.zyh.mapper.CustomerMapper;
+import com.jrx.zyh.model.Customer;
 import com.jrx.zyh.model.dto.TransactionInfoMapDTO;
-import com.jrx.zyh.service.TransactionInfoService;
+import com.jrx.zyh.service.ITransactionInfoService;
 import com.jrx.zyh.util.DateUtil;
-import org.json.JSONObject;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 
-import java.math.BigDecimal;
 import java.text.ParseException;
 import java.util.*;
-import java.util.function.Predicate;
-import java.util.stream.Collectors;
 
 /**
  * @author Java实习-张永恒
@@ -28,12 +23,12 @@ import java.util.stream.Collectors;
  * @describe
  */
 
-@SpringBootTest
+@SpringBootTest(classes = DataReportSdkApplication.class)
 @RunWith(SpringJUnit4ClassRunner.class)
 public class DTOTest {
 
     @Autowired
-    private TransactionInfoService service;
+    private ITransactionInfoService service;
 
 /*    @Test
     public void test01() throws ParseException, JsonProcessingException {
@@ -82,6 +77,19 @@ public class DTOTest {
         String s1 = new Gson().toJson(tran);
 //        String s = new ObjectMapper().writeValueAsString(tran);
         System.out.println(s1);
+    }
+
+    @Autowired
+    private CustomerMapper customerMapper;
+
+    @Test
+    public void test04(){
+        List<Customer> list = customerMapper.selectByCondition(1,null,null);
+        Integer count = customerMapper.countByCondition(null,null);
+
+        System.out.println(list);
+        System.out.println(count);
+
     }
 
 }

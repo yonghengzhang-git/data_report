@@ -2,7 +2,7 @@ package com.jrx.zyh.service.impl;
 
 import com.jrx.zyh.mapper.DailySummaryMapper;
 import com.jrx.zyh.model.DailySummary;
-import com.jrx.zyh.service.DailySummaryService;
+import com.jrx.zyh.service.IDailySummaryService;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.util.List;
@@ -12,7 +12,7 @@ import java.util.List;
  * @date 2021/5/31 9:31
  * @describe
  */
-public class DailySummaryServiceImpl implements DailySummaryService {
+public class DailySummaryServiceImpl implements IDailySummaryService {
 
     @Autowired
     private DailySummaryMapper dailySummaryMapper;
